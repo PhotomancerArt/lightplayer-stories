@@ -1,0 +1,13 @@
+{
+  "sourceRepo": "PhotomancerArt/lightplayer",
+  "sourceSha": "bcd1ac433a8fd6ada32f9cffd9e2353b99c88502",
+  "capturedAt": "2026-08-14T19:30:30Z",
+  "runUrl": null,
+  "seed": true,
+  "chromeForTesting": "151.0.7922.47",
+  "oxipng": "10.1.1",
+  "wasmBindgen": "0.2.114",
+  "dioxusCli": "0.7.9",
+  "stale": [],
+  "tolerated": []
+}
