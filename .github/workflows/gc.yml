@@ -1,0 +1,109 @@
+# Snapshot-ref retention GC.
+#
+# Policy (ratified in lightplayer's story-baselines plan, Q3, and recorded in
+# its ADR docs/adr/2026-08-17-story-baselines-companion-repo.md):
+#   - pr-*  refs: delete when the snapshot commit is older than 30 days.
+#   - sha-* refs: delete when older than 180 days, but ALWAYS keep the newest
+#     50 by commit date regardless of age — the baseline lookup in lightplayer
+#     CI walks up to 50 first-parent main commits, and that floor must never
+#     go blind.
+#   - `latest` and `main` are never touched (`latest` hosts the lightplayer
+#     README hero images).
+#
+# Deleting a ref is the only lever here: unreachable objects are reclaimed by
+# GitHub's background gc on its own schedule, so raw.githubusercontent.com
+# URLs keyed by commit sha (PR comment thumbnails) die only after objects
+# become unreachable AND that gc runs. Comment images on PRs older than the
+# retention window are best-effort by design.
+#
+# Manual runs (workflow_dispatch) default to dry_run=true and only print;
+# the weekly scheduled run deletes for real.
+name: GC snapshot refs
+
+on:
+  schedule:
+    - cron: "17 6 * * 1" # Mondays 06:17 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print deletions without performing them"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  gc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      # Scheduled runs delete; dispatch runs obey the input (default dry).
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
+      PR_MAX_AGE_DAYS: 30
+      SHA_MAX_AGE_DAYS: 180
+      SHA_KEEP_NEWEST: 50
+    steps:
+      - name: Collect, evaluate, and delete expired snapshot refs
+        shell: bash
+        run: |
+          set -euo pipefail
+          now=$(date -u +%s)
+          pr_cutoff=$(( now - PR_MAX_AGE_DAYS * 86400 ))
+          sha_cutoff=$(( now - SHA_MAX_AGE_DAYS * 86400 ))
+
+          # One paginated call per family; each row: ref-name<TAB>commit-sha
+          list_refs() {
+            gh api --paginate "repos/$REPO/git/matching-refs/heads/$1" \
+              --jq '.[] | [.ref, .object.sha] | @tsv'
+          }
+
+          # Commit date (unix epoch) for a sha — snapshots are single commits,
+          # so the committer date IS the capture date.
+          commit_epoch() {
+            date -u -d "$(gh api "repos/$REPO/commits/$1" --jq .commit.committer.date)" +%s
+          }
+
+          delete_ref() {
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "DRY-RUN would delete: $1"
+            else
+              gh api -X DELETE "repos/$REPO/git/${1#refs/}" >/dev/null
+              echo "deleted: $1"
+            fi
+          }
+
+          deleted=0 kept=0
+
+          echo "== pr-* refs (max age ${PR_MAX_AGE_DAYS}d)"
+          while IFS=$'\t' read -r ref sha; do
+            [ -n "$ref" ] || continue
+            epoch=$(commit_epoch "$sha")
+            if [ "$epoch" -lt "$pr_cutoff" ]; then
+              delete_ref "$ref"; deleted=$((deleted+1))
+            else
+              kept=$((kept+1))
+            fi
+          done < <(list_refs "pr-" || true)
+
+          echo "== sha-* refs (max age ${SHA_MAX_AGE_DAYS}d, always keep newest ${SHA_KEEP_NEWEST})"
+          # Build "epoch ref" rows, newest first, so the keep-floor is a head -n.
+          rows=$(while IFS=$'\t' read -r ref sha; do
+            [ -n "$ref" ] || continue
+            echo "$(commit_epoch "$sha") $ref"
+          done < <(list_refs "sha-" || true) | sort -rn)
+          total=$(printf '%s\n' "$rows" | sed '/^$/d' | wc -l)
+          index=0
+          while read -r epoch ref; do
+            [ -n "$ref" ] || continue
+            index=$((index+1))
+            if [ "$index" -le "$SHA_KEEP_NEWEST" ] || [ "$epoch" -ge "$sha_cutoff" ]; then
+              kept=$((kept+1))
+            else
+              delete_ref "$ref"; deleted=$((deleted+1))
+            fi
+          done <<< "$rows"
+
+          echo "== done: kept $kept, deleted $deleted (dry_run=$DRY_RUN, sha-* total $total)"
