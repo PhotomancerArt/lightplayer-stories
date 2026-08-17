@@ -70,7 +70,7 @@ jobs:
             if [ "$DRY_RUN" = "true" ]; then
               echo "DRY-RUN would delete: $1"
             else
-              gh api -X DELETE "repos/$REPO/git/${1#refs/}" >/dev/null
+              gh api -X DELETE "repos/$REPO/git/refs/${1#refs/}" >/dev/null
               echo "deleted: $1"
             fi
           }
