@@ -1,9 +1,9 @@
 {
   "sourceRepo": "PhotomancerArt/lightplayer",
-  "sourceSha": "62e3dc3d4b1128699f8131b37ff87f59ab133c96",
-  "baselineSourceSha": "4512433bb39b5980213d7532ac98333e53e44cbb",
-  "capturedAt": "2026-08-19T18:28:27.843Z",
-  "runUrl": "https://github.com/PhotomancerArt/lightplayer/actions/runs/32285898153",
+  "sourceSha": "0c8897e2ad078c0ad1f9c4e1dbd9874e9b5a0ba2",
+  "baselineSourceSha": "62e3dc3d4b1128699f8131b37ff87f59ab133c96",
+  "capturedAt": "2026-08-19T21:02:53.035Z",
+  "runUrl": "https://github.com/PhotomancerArt/lightplayer/actions/runs/32300247421",
   "chromeForTesting": "151.0.7922.47",
   "oxipng": "10.1.1",
   "wasmBindgen": "0.2.114",
@@ -12,7 +12,6 @@
   "modified": [],
   "removed": [],
   "tolerated": [
-    "base__code-figure__long-code-scrolls-inside__md.png",
     "base__detail-popover__open-sections__sm.png",
     "base__detail-popover__open-sections__md.png",
     "base__detail-popover__open-sections__lg.png",
@@ -76,14 +75,13 @@
     "studio__layout__site-chrome__narrow__md.png",
     "studio__layout__site-chrome__narrow__lg.png",
     "studio__layout__site-chrome__sections-active__lg.png",
-    "studio__layout__version-badge__loaded__sm.png",
     "studio__module__module-face__author-zoom__md.png",
     "studio__module__module-face__author-zoom__lg.png",
     "studio__module__module-face__embedded-module__sm.png",
     "studio__module__module-face__embedded-module__md.png",
     "studio__module__module-face__embedded-module__lg.png",
+    "studio__module__module-face__hero-lamps__md.png",
     "studio__module__module-face__hero-lamps__lg.png",
-    "studio__module__module-face__hero-raster__md.png",
     "studio__module__module-face__root-card__sm.png",
     "studio__module__module-face__root-card__lg.png",
     "studio__module__module-face__wiring-drawer-open__sm.png",
@@ -311,6 +309,7 @@
     "studio__roster__roster-card__troubleshoot-sheet-open__sm.png",
     "studio__roster__roster-card__troubleshoot-sheet-open__md.png",
     "studio__roster__roster-card__troubleshoot-sheet-open__lg.png",
-    "studio__workbench__workbench__props-stack-dived-descended__md.png"
+    "studio__workbench__workbench__props-stack-dived-descended__md.png",
+    "studio__workbench__workbench__props-stack-dived-descended__lg.png"
   ]
 }
