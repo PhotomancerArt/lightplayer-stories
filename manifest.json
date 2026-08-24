@@ -1,17 +1,29 @@
 {
   "sourceRepo": "PhotomancerArt/lightplayer",
-  "sourceSha": "dc84980ae2af95fc50f672bd206c2fc2dcfbd32f",
-  "baselineSourceSha": "40852b555e13eb535d66766525b687d9ce811239",
-  "capturedAt": "2026-08-24T19:18:35.645Z",
-  "runUrl": "https://github.com/PhotomancerArt/lightplayer/actions/runs/32765703290",
+  "sourceSha": "9ae7f27093a761dea44de8a0225be784510ef545",
+  "baselineSourceSha": "dc84980ae2af95fc50f672bd206c2fc2dcfbd32f",
+  "capturedAt": "2026-08-24T20:10:28.648Z",
+  "runUrl": "https://github.com/PhotomancerArt/lightplayer/actions/runs/32770774002",
   "chromeForTesting": "151.0.7922.47",
   "oxipng": "10.1.1",
   "wasmBindgen": "0.2.114",
   "dioxusCli": "0.7.9",
-  "added": [],
-  "modified": [],
+  "added": [
+    "studio__node__slot-value-editor__dropdown-field-wired__sm.png",
+    "studio__node__slot-value-editor__dropdown-field-wired__md.png",
+    "studio__node__slot-value-editor__dropdown-field-wired__lg.png"
+  ],
+  "modified": [
+    "studio__patch__patch-panel__patch-panel-armed__sm.png",
+    "studio__patch__patch-panel__patch-panel-armed__md.png",
+    "studio__patch__patch-panel__patch-panel-armed__lg.png",
+    "studio__patch__patch-panel__patch-panel-derived__sm.png",
+    "studio__patch__patch-panel__patch-panel-derived__md.png",
+    "studio__patch__patch-panel__patch-panel-derived__lg.png"
+  ],
   "removed": [],
   "tolerated": [
+    "base__code-figure__long-code-scrolls-inside__lg.png",
     "base__detail-popover__open-sections__sm.png",
     "base__detail-popover__open-sections__md.png",
     "base__detail-popover__open-sections__lg.png",
@@ -79,7 +91,6 @@
     "studio__layout__site-chrome__narrow__md.png",
     "studio__layout__site-chrome__narrow__lg.png",
     "studio__layout__site-chrome__sections-active__lg.png",
-    "studio__layout__version-badge__loaded__sm.png",
     "studio__mapping-editor__editor-fit-preview__sm.png",
     "studio__mapping-editor__editor-fit-preview__md.png",
     "studio__mapping-editor__editor-fit-preview__lg.png",
@@ -106,8 +117,8 @@
     "studio__module__module-face__embedded-module__sm.png",
     "studio__module__module-face__embedded-module__md.png",
     "studio__module__module-face__embedded-module__lg.png",
-    "studio__module__module-face__hero-lamps__md.png",
     "studio__module__module-face__hero-lamps__lg.png",
+    "studio__module__module-face__hero-raster__sm.png",
     "studio__module__module-face__hero-raster__md.png",
     "studio__module__module-face__root-card__sm.png",
     "studio__module__module-face__root-card__lg.png",
@@ -336,7 +347,6 @@
     "studio__roster__roster-card__simulator-nothing-loaded__lg.png",
     "studio__roster__roster-card__troubleshoot-sheet-open__sm.png",
     "studio__roster__roster-card__troubleshoot-sheet-open__md.png",
-    "studio__roster__roster-card__troubleshoot-sheet-open__lg.png",
-    "studio__workbench__workbench__props-stack-dived-descended__lg.png"
+    "studio__roster__roster-card__troubleshoot-sheet-open__lg.png"
   ]
 }
