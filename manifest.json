@@ -1,9 +1,9 @@
 {
   "sourceRepo": "PhotomancerArt/lightplayer",
-  "sourceSha": "9773cf6563f0e353e8d0d5f5c9f78370bf139955",
-  "baselineSourceSha": "0387b2ed1f88bfc5085b91a06fee7df4dceca242",
-  "capturedAt": "2026-08-28T00:53:55.781Z",
-  "runUrl": "https://github.com/PhotomancerArt/lightplayer/actions/runs/33130236319",
+  "sourceSha": "01928b360ea7da1b57db1d31410b0c20e20d7774",
+  "baselineSourceSha": "9773cf6563f0e353e8d0d5f5c9f78370bf139955",
+  "capturedAt": "2026-08-28T21:59:07.230Z",
+  "runUrl": "https://github.com/PhotomancerArt/lightplayer/actions/runs/33213618744",
   "chromeForTesting": "151.0.7922.47",
   "oxipng": "10.1.1",
   "wasmBindgen": "0.2.114",
@@ -75,6 +75,8 @@
     "studio__module__module-face__embedded-module__sm.png",
     "studio__module__module-face__embedded-module__md.png",
     "studio__module__module-face__embedded-module__lg.png",
+    "studio__module__module-face__hero-lamps__md.png",
+    "studio__module__module-face__hero-raster__md.png",
     "studio__module__module-face__root-card__sm.png",
     "studio__module__module-face__root-card__lg.png",
     "studio__module__module-face__wiring-drawer-open__sm.png",
@@ -302,12 +304,12 @@
     "studio__roster__roster-card__op-overlay-indeterminate__sm.png",
     "studio__roster__roster-card__op-overlay-indeterminate__md.png",
     "studio__roster__roster-card__op-overlay-indeterminate__lg.png",
+    "studio__roster__roster-card__play-tab-simulator__md.png",
     "studio__roster__roster-card__play-tab-simulator__lg.png",
     "studio__roster__roster-card__simulator-nothing-loaded__md.png",
     "studio__roster__roster-card__simulator-nothing-loaded__lg.png",
     "studio__roster__roster-card__troubleshoot-sheet-open__sm.png",
     "studio__roster__roster-card__troubleshoot-sheet-open__md.png",
-    "studio__roster__roster-card__troubleshoot-sheet-open__lg.png",
-    "studio__workbench__workbench__props-stack-dived-descended__lg.png"
+    "studio__roster__roster-card__troubleshoot-sheet-open__lg.png"
   ]
 }
